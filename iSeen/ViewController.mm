@@ -119,7 +119,7 @@
         if  ([objName  isEqualToString: @"Sky\r"]){
             someLabel.textColor = [UIColor colorWithRed:0.0f green:128.0f/255.0f blue:1.0f alpha:1.0f];
         }
-        else if ([objName isEqualToString:@"HighVeg\r"] || [objName isEqualToString:@"lowVeg\r"])
+        else if ([objName isEqualToString:@"HighVeg\r"] || [objName isEqualToString:@"LowVeg\r"])
             someLabel.textColor= [UIColor colorWithRed:51.0/255.0f green:1.0f blue:51.0/255.0f alpha:1.0f];
         else if ([objName isEqualToString:@"Building\r"])
             someLabel.textColor= [UIColor brownColor];
@@ -132,7 +132,7 @@
         else if ([objName isEqualToString:@"YellowLine\r"])
             someLabel.textColor= [UIColor orangeColor];
         else if ([objName isEqualToString:@"WhiteLine\r"])
-            someLabel.textColor= [UIColor lightGrayColor];
+            someLabel.textColor= [UIColor colorWithRed:110.0/255.0f green:80.0/255.0f blue:80.0/255.0f alpha:1.0f];
         else if ([objName isEqualToString:@"TreeTrunk\r"])
             someLabel.textColor= [UIColor colorWithRed:139.0/255.0f green:69.0f/255.0f blue:19.0/255.0f alpha:1.0f];
         else
