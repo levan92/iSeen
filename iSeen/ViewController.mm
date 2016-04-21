@@ -75,11 +75,24 @@
 }
 
 -(void) uploadPhoto: (NSTimer*) timer {
-    //NSLog(@"Uploading current video frame...");
-    NSData *imageData = UIImageJPEGRepresentation(self.frame, 0.005); //compressing image
-    //TCP
-    [imageData bytes];
+    NSLog(@"Uploading current video frame...");
+//    NSData *imageData = UIImageJPEGRepresentation(self.frame, 0.7); //compressing image original: 0.005
+//    //TCP
+////    float dataSize = [imageData length];
+////    NSLog(@"%f",dataSize);
+//    [outputStream write:(const uint8_t *)[imageData bytes] maxLength:[imageData length]];
+
+    NSData *imageData = UIImageJPEGRepresentation(self.frame, 0.7); //compressing image original: 0.005
+    
+    NSUInteger dataSize = [imageData length];
+    uint32_t dataSize4bytes = (uint32_t) dataSize;
+    NSData *byteData = [NSData dataWithBytes:&dataSize4bytes length:4];
+    
+    //send size first
+    [outputStream write:(const uint8_t *)[byteData bytes] maxLength:[byteData length]];
+    //then send image
     [outputStream write:(const uint8_t *)[imageData bytes] maxLength:[imageData length]];
+
 }
 
 -(void) addLabels : (NSString*) labelsString{
@@ -139,7 +152,7 @@
             someLabel.textColor = [UIColor redColor];
         [self.view addSubview:someLabel];
     }
-    //NSLog(@"%lu labels labelled.",(unsigned long)numOfLabels);
+    NSLog(@"%lu labels labelled.",(unsigned long)numOfLabels);
 }
 
 //resizes UIImage to prepare for frame upload
