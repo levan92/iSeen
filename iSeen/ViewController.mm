@@ -82,7 +82,7 @@
 ////    NSLog(@"%f",dataSize);
 //    [outputStream write:(const uint8_t *)[imageData bytes] maxLength:[imageData length]];
 
-    NSData *imageData = UIImageJPEGRepresentation(self.frame, 0.7); //compressing image original: 0.005
+    NSData *imageData = UIImageJPEGRepresentation(self.frame, 0.99); //compressing image original: 0.005
     
     NSUInteger dataSize = [imageData length];
     uint32_t dataSize4bytes = (uint32_t) dataSize;
